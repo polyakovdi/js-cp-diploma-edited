@@ -70,8 +70,8 @@ _Билет_  QR-код c уникальным кодом бронировани
 - HTML
 
 **Описание файлов JS**
-- [CreateRequest](./md/createRequest.md)
-- [Hall](./md/hall.md)
+- [createRequest](./md/createRequest.md)
+- [hall](./md/hall.md)
 - [index](./md/index.md)
-- [Payment](./md/payment.md)
-- [Ticket](./md/ticket.md)
+- [payment](./md/payment.md)
+- [ticket](./md/ticket.md)
