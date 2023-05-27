@@ -1,20 +1,20 @@
 let selectSeanse = JSON.parse(sessionStorage.selectSeanse);
-let bodyRequest = `event=get_hallConfig&timestamp=${selectSeanse.seanceTimeStamp}&hallId=${selectSeanse.hallId}&seanceId=${selectSeanse.seanceId}`;
+let Request = `event=get_hallConfig&timestamp=${selectSeanse.seanceTimeStamp}&hallId=${selectSeanse.hallId}&seanceId=${selectSeanse.seanceId}`;
 
 document.addEventListener("DOMContentLoaded", () => {
   let buttonAcceptin = document.querySelector('.acceptin-button');
-  let buyingInfoTitle = document.querySelector('.buying__info-title');
-  let buyingInfoStart = document.querySelector('.buying__info-start');
-  let buyingInfoHall = document.querySelector('.buying__info-hall');
+  let buyingTitle = document.querySelector('.buying__info-title');
+  let buyingStart = document.querySelector('.buying__info-start');
+  let buyingHall = document.querySelector('.buying__info-hall');
   let priceStandart = document.querySelector('.price-standart');
   let confStepWrapper = document.querySelector('.conf-step__wrapper');
 
-  buyingInfoTitle.innerHTML = selectSeanse.filmName;
-  buyingInfoStart.innerHTML = `Начало сеанса ${selectSeanse.seanceTime}`;
-  buyingInfoHall.innerHTML = selectSeanse.hallName;
+  buyingTitle.innerHTML = selectSeanse.filmName;
+  buyingStart.innerHTML = `Начало сеанса ${selectSeanse.seanceTime}`;
+  buyingHall.innerHTML = selectSeanse.hallName;
   priceStandart.innerHTML = selectSeanse.priceStandart;
 
-  getRequest(bodyRequest, (response) => {
+  getRequest(Request, (response) => {
     console.log(response)
     if (response) {
       selectSeanse.hallConfig = response;

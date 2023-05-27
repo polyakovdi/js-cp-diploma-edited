@@ -1,40 +1,40 @@
-let bodyRequest = "event=update";
+let Request = "event=update";
 
 document.addEventListener("DOMContentLoaded", () => {
-  let dayNumber = document.querySelectorAll(".page-nav__day-number");
-  let dayWeek = document.querySelectorAll(".page-nav__day-week");
-  let dayWeekList = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+  let numberDay = document.querySelectorAll(".page-nav__day-number");
+  let weekDay = document.querySelectorAll(".page-nav__day-week");
+  let weekListDay = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
   let today = new Date();
   today.setHours(0, 0, 0);
-  for (let i = 0; i < dayNumber.length; i++) {
+  for (let i = 0; i < numberDay.length; i++) {
     let day = new Date(today.getTime() + (i * 24 * 60 * 60 * 1000));
     let timestamp = Math.trunc(day/1000);
-    dayNumber[i].innerHTML = `${day.getDate()},`;
-    dayWeek[i].innerHTML = `${dayWeekList[day.getDay()]}`;
-    let link = dayNumber[i].parentNode
+    numberDay[i].innerHTML = `${day.getDate()},`;
+    weekDay[i].innerHTML = `${weekListDay[day.getDay()]}`;
+    let link = numberDay[i].parentNode
     link.dataset.timeStamp = timestamp;
-    if ((dayWeek[i].innerHTML == 'Вс') || (dayWeek[i].innerHTML == 'Сб')) {
+    if ((weekDay[i].innerHTML == 'Вс') || (weekDay[i].innerHTML == 'Сб')) {
       link.classList.add('page-nav__day_weekend');
     } else {
       link.classList.remove('page-nav__day_weekend');
     };
   };
 
-  getRequest(bodyRequest, (response) => {
-    let obj = {};
-    obj.seances = response.seances.result; 
-    obj.films = response.films.result;
-    obj.halls = response.halls.result;
-    obj.halls = obj.halls.filter(hall => hall.hall_open == 1);
+  getRequest(Request, (response) => {
+    let object = {};
+    object.seances = response.seances.result; 
+    object.films = response.films.result;
+    object.halls = response.halls.result;
+    object.halls = object.halls.filter(hall => hall.hall_open == 1);
     
     let main = document.querySelector("main");
 
-    obj.films.forEach((film) => {
+    object.films.forEach((film) => {
       let seancesHTML = '';
       let filmId = film.film_id;
       
-      obj.halls.forEach((hall) => {
-        let seances = obj.seances.filter(seance => ((seance.seance_hallid == hall.hall_id) && (seance.seance_filmid == filmId)));
+      object.halls.forEach((hall) => {
+        let seances = object.seances.filter(seance => ((seance.seance_hallid == hall.hall_id) && (seance.seance_filmid == filmId)));
         if (seances.length > 0) {
           seancesHTML += `
             <div class="movie-seances__hall">
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     movieSeances.forEach(movieSeance => movieSeance.addEventListener('click', (event) => {
       let selectSeanse = event.target.dataset;
-      selectSeanse.hallConfig = obj.halls.find(hall => hall.hall_id == selectSeanse.hallId).hall_config;
+      selectSeanse.hallConfig = object.halls.find(hall => hall.hall_id == selectSeanse.hallId).hall_config;
         sessionStorage.setItem('selectSeanse', JSON.stringify(selectSeanse));
     }));
   });
