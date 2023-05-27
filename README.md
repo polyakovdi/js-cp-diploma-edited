@@ -4,6 +4,9 @@
 - CSS
 - HTML
 
+**Ссылка на GitHub Pages website** 
+https://polyakovdi.github.io/js-cp-diploma-edited/
+
 **Описание файлов JS**
 - [createRequest](./md/createRequest.md)
 - [hall](./md/hall.md)
