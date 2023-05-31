@@ -1,4 +1,4 @@
-function getRequest(body, callback = (response) => {}) {
+function getRequest(body, callback = () => {}) {
     let xhr = new XMLHttpRequest();
 
   xhr.open("POST", "https://jscp-diplom.netoserver.ru/", true);
