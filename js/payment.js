@@ -18,8 +18,9 @@ document.querySelector(".ticket__cost").innerHTML = price;
 
 let newHallConfig = selectSeanse.hallConfig.replace(/selected/g, "taken");
 console.log(newHallConfig);
-let Request = `event=sale_add&timestamp=${selectSeanse.seanceTimeStamp}&hallId=${selectSeanse.hallId}&seanceId=${selectSeanse.seanceId}&hallConfiguration=${newHallConfig}`;
 
 document.querySelector(".acceptin-button").addEventListener("click", (event) => {
 	event.preventDefault();
+	let request = `event=sale_add&timestamp=${selectSeanse.seanceTimeStamp}&hallId=${selectSeanse.hallId}&seanceId=${selectSeanse.seanceId}&hallConfiguration=${newHallConfig}`;
+	getRequest(request);
 });
