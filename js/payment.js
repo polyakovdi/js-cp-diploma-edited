@@ -22,21 +22,4 @@ let Request = `event=sale_add&timestamp=${selectSeanse.seanceTimeStamp}&hallId=$
 
 document.querySelector(".acceptin-button").addEventListener("click", (event) => {
 	event.preventDefault();
-
-	let xhr = new XMLHttpRequest();
-	xhr.open("POST", "https://jscp-diplom.netoserver.ru/", true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xhr.send(Request);
-
-	xhr.onload = function () {
-		if (xhr.status != 200) {
-			alert("Ошибка: " + xhr.status);
-			return;
-		}
-		window.location.href = "ticket.html";
-	};
-
-	xhr.onerror = function () {
-		alert("Запрос не удался");
-	};
 });
