@@ -22,5 +22,7 @@ console.log(newHallConfig);
 document.querySelector(".acceptin-button").addEventListener("click", (event) => {
 	event.preventDefault();
 	let request = `event=sale_add&timestamp=${selectSeanse.seanceTimeStamp}&hallId=${selectSeanse.hallId}&seanceId=${selectSeanse.seanceId}&hallConfiguration=${newHallConfig}`;
-	getRequest(request);
+	getRequest(request, ()=>{
+		location.href='ticket.html';
+	});
 });
