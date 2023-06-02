@@ -1,5 +1,5 @@
 let selectSeanse = JSON.parse(sessionStorage.selectSeanse);
-let Request = `event=get_hallConfig&timestamp=${selectSeanse.seanceTimeStamp}&hallId=${selectSeanse.hallId}&seanceId=${selectSeanse.seanceId}`;
+let request = `event=get_hallConfig&timestamp=${selectSeanse.seanceTimeStamp}&hallId=${selectSeanse.hallId}&seanceId=${selectSeanse.seanceId}`;
 
 document.addEventListener("DOMContentLoaded", () => {
   let buttonAcceptin = document.querySelector('.acceptin-button');
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   buyingHall.innerHTML = selectSeanse.hallName;
   priceStandart.innerHTML = selectSeanse.priceStandart;
 
-  getRequest(Request, (response) => {
+  getRequest(request, (response) => {
     console.log(response)
     if (response) {
       selectSeanse.hallConfig = response;
